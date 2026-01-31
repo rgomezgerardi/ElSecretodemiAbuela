@@ -94,13 +94,13 @@ public class LevelManager : MonoBehaviour
 
         if (completado)
         {
-            GameManager.Instance.GuardarBonificacion(tiempoNivel);
+            //GameManager.Instance.GuardarBonificacion(tiempoNivel);
             GameManager.Instance.AvanzarNivel();
             Debug.Log($"Nivel completado | Bonificación: {tiempoNivel}s");
         }
         else
         {
-            GameManager.Instance.GuardarBonificacion(0f);
+            //GameManager.Instance.GuardarBonificacion(0f);
             Debug.Log("Nivel fallado | Sin bonificación");
         }
     }
