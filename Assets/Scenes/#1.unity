@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -176,11 +176,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!4 &25922834 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-  m_PrefabInstance: {fileID: 374031831}
+--- !u!114 &13338844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 13338843}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &55331768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -400,69 +406,8 @@ Transform:
   - {fileID: 1524925765}
   - {fileID: 918067468}
   - {fileID: 511775447}
-  - {fileID: 25922834}
-  - {fileID: 1756313114}
-  - {fileID: 1556911813}
-  - {fileID: 1630723560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &374031831
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 349442804}
-    m_Modifications:
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.95000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6293324243676757174, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_Name
-      value: Card (20)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +545,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -647,6 +592,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &416523118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 416523117}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &420619131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -704,6 +660,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &420619132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 420619131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &496045831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -724,7 +691,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -732,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.355
+      value: -0.307
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -771,63 +738,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!1001 &633081426
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 349442804}
-    m_Modifications:
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.95000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6293324243676757174, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_Name
-      value: Card (21)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &613073975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 613073974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &702976405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,7 +759,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -885,63 +806,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!1001 &727900958
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 349442804}
-    m_Modifications:
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.95000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6293324243676757174, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_Name
-      value: Card (22)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &702976406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 702976405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &761319987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1006,7 +881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1014,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.30500007
+      value: -0.939
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1053,6 +928,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &900669849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 900669848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &918067468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1068,7 +954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1115,6 +1001,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &984509920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 984509919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &985608733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1125,7 +1022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1172,6 +1069,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &985608734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 985608733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &1007542735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,7 +1090,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1229,6 +1137,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1007542736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1007542735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &1074260138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1286,63 +1205,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!1001 &1130019228
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 349442804}
-    m_Modifications:
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.95000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6293324243676757174, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-      propertyPath: m_Name
-      value: Card (23)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1074260139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1074260138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1201396985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1377,32 +1250,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb4858b67a7816439a9a9564c18cca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  objetosCartas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  cartas:
+  - {fileID: 420619132}
+  - {fileID: 1074260139}
+  - {fileID: 1726680167}
+  - {fileID: 1388367236}
+  - {fileID: 1311965151}
+  - {fileID: 2065414708}
+  - {fileID: 1480316346}
+  - {fileID: 702976406}
+  - {fileID: 1530877361}
+  - {fileID: 416523118}
+  - {fileID: 1828951534}
+  - {fileID: 613073975}
+  - {fileID: 985608734}
+  - {fileID: 1993371327}
+  - {fileID: 984509920}
+  - {fileID: 1769925287}
+  - {fileID: 900669849}
+  - {fileID: 2038867587}
+  - {fileID: 1007542736}
+  - {fileID: 13338844}
   nivelActual: 0
   topeCartas: 0
   ultimoAcierto: 0
   tiempoNivel: 0
-  tiempoBonificacion: 0
+  tiempoRestante: 0
 --- !u!4 &1307199761
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,7 +1301,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1475,6 +1348,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1311965151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1311965150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1335484149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1495,7 +1379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1542,6 +1426,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1388367236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1388367235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1438760202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1557,7 +1452,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1604,6 +1499,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1480316346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1480316345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1500658266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -1689,7 +1595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1736,20 +1642,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!4 &1556911813 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-  m_PrefabInstance: {fileID: 727900958}
+--- !u!114 &1530877361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1530877360}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1627892945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
   m_PrefabInstance: {fileID: 984509919}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1630723560 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-  m_PrefabInstance: {fileID: 1130019228}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1696276898 stripped
 Transform:
@@ -1813,11 +1720,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
---- !u!4 &1756313114 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
-  m_PrefabInstance: {fileID: 633081426}
+--- !u!114 &1726680167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1726680166}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &1769925286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1828,7 +1741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1836,7 +1749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.30500007
+      value: -0.939
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1875,6 +1788,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1769925287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1769925286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &1828951533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,7 +1809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1893,7 +1817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.355
+      value: -0.307
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1932,6 +1856,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1828951534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1828951533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &1895024508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -2069,7 +2004,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2116,6 +2051,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &1993371327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 1993371326}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &2038867586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2126,7 +2072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2134,7 +2080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.30500007
+      value: -0.939
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2173,6 +2119,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &2038867587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 2038867586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!1001 &2065414707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2183,7 +2140,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2191,7 +2148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0.309
       objectReference: {fileID: 0}
     - target: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2230,6 +2187,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+--- !u!114 &2065414708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100414720778455299, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
+  m_PrefabInstance: {fileID: 2065414707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
 --- !u!4 &2072468310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}

@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Progresión")]
     [SerializeField] private int nivelActual = 1;
-
     [SerializeField] private int[] topesPorNivel = { 5, 8, 12, 16, 20 };
 
     private float bonificacionTiempo = 0f;
@@ -19,7 +18,6 @@ public class GameManager : MonoBehaviour
         get
         {
             int index = nivelActual - 1;
-
             if (index < 0 || index >= topesPorNivel.Length)
                 return topesPorNivel[topesPorNivel.Length - 1];
 
@@ -42,20 +40,10 @@ public class GameManager : MonoBehaviour
 
     public void AvanzarNivel()
     {
-        AvanzarNivelInterno();
-    }
-
-    public void GuardaarBonificacion(float tiempoSobrante)
-    {
-        GuardarBonificacionInterno(tiempoSobrante);
-    }
-
-    private void AvanzarNivelInterno()
-    {
         nivelActual = Mathf.Min(nivelActual + 1, topesPorNivel.Length);
     }
 
-    private void GuardarBonificacionInterno(float tiempoSobrante)
+    public void GuardarBonificacion(float tiempoSobrante)
     {
         bonificacionTiempo = Mathf.Max(0f, tiempoSobrante);
     }

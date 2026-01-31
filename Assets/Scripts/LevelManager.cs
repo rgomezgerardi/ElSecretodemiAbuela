@@ -5,19 +5,19 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    [Header("Objetos del nivel")]
-    [SerializeField] private List<GameObject> objetosCartas;
+    [Header("Cartas del nivel")]
+    [SerializeField] private List<CardManager> cartas;
 
-    [Header("Estado del nivel")]
+    [Header("Estado")]
     [SerializeField] private int nivelActual;
     [SerializeField] private int topeCartas;
     [SerializeField] private int ultimoAcierto;
 
     [Header("Tiempo")]
     [SerializeField] private float tiempoNivel;
-    [SerializeField] private float tiempoBonificacion;
+    [SerializeField] private float tiempoRestante;
 
-    private bool nivelActivo = true;
+    private bool nivelActivo;
 
     void Awake()
     {
@@ -40,74 +40,34 @@ public class LevelManager : MonoBehaviour
         if (!nivelActivo)
             return;
 
-        tiempoNivel -= Time.deltaTime;
+        tiempoRestante -= Time.deltaTime;
 
-        if (tiempoNivel <= 0f)
+        if (tiempoRestante <= 0f)
         {
-            tiempoNivel = 0f;
-            TerminarNivel(false);
+            tiempoRestante = 0f;
+            FinNivel(false);
         }
     }
 
     private void InicializarNivel()
     {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager no encontrado.");
-            return;
-        }
-
         nivelActual = GameManager.Instance.NivelActual;
         topeCartas = GameManager.Instance.TopeCartas;
+
         ultimoAcierto = 0;
 
-        tiempoBonificacion = GameManager.Instance.BonificacionTiempo;
-        tiempoNivel = 60f + tiempoBonificacion;
+        tiempoNivel = 60f + GameManager.Instance.BonificacionTiempo;
+        tiempoRestante = tiempoNivel;
 
         AsignarCartasRandom();
 
-        Debug.Log($"Nivel {nivelActual} iniciado | Tiempo: {tiempoNivel}s");
-    }
-
-    public bool EvaluarCarta(ObjetoCarta carta)
-    {
-        int valor = carta.ValorCarta;
-
-        if (valor > ultimoAcierto && valor <= topeCartas)
-        {
-            ultimoAcierto = valor;
-            Debug.Log($"ACIERTO → Carta {valor}");
-
-            if (ultimoAcierto == topeCartas)
-                TerminarNivel(true);
-
-            return true;
-        }
-
-        Debug.Log($"ERROR → Carta {valor}");
-        return false;
-    }
-
-    private void TerminarNivel(bool completado)
-    {
-        nivelActivo = false;
-
-        if (completado)
-        {
-            //GameManager.Instance.GuardarBonificacion(tiempoNivel);
-            GameManager.Instance.AvanzarNivel();
-            Debug.Log($"Nivel completado | Bonificación: {tiempoNivel}s");
-        }
-        else
-        {
-            //GameManager.Instance.GuardarBonificacion(0f);
-            Debug.Log("Nivel fallado | Sin bonificación");
-        }
+        nivelActivo = true;
     }
 
     private void AsignarCartasRandom()
     {
         List<int> pool = new List<int>();
+
         for (int i = 1; i <= 20; i++)
             pool.Add(i);
 
@@ -117,18 +77,39 @@ public class LevelManager : MonoBehaviour
             (pool[i], pool[r]) = (pool[r], pool[i]);
         }
 
-        for (int i = 0; i < objetosCartas.Count; i++)
-        {
-            ObjetoCarta carta = objetosCartas[i].GetComponent<ObjetoCarta>();
-
-            if (carta == null)
-            {
-                Debug.LogError($"El objeto {objetosCartas[i].name} no tiene ObjetoCarta");
-                continue;
-            }
-
-            carta.SetValor(pool[i]);
-        }
+        for (int i = 0; i < cartas.Count; i++)
+            cartas[i].SetValorCarta(pool[i]);
     }
 
+    public bool EvaluarCarta(ObjetoCarta carta)
+    {
+        int valor = carta.ValorCarta;
+
+        if (valor == ultimoAcierto + 1 && valor <= topeCartas)
+        {
+            ultimoAcierto = valor;
+
+            if (ultimoAcierto == topeCartas)
+                FinNivel(true);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void FinNivel(bool ganado)
+    {
+        nivelActivo = false;
+
+        if (ganado)
+        {
+            GameManager.Instance.GuardarBonificacion(tiempoRestante);
+            GameManager.Instance.AvanzarNivel();
+        }
+        else
+        {
+            GameManager.Instance.GuardarBonificacion(0f);
+        }
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [Header("Datos")]
+    [Header("Datos de la carta")]
     [SerializeField] private ObjetoCarta carta;
 
     [Header("Animación")]
@@ -12,9 +12,19 @@ public class CardManager : MonoBehaviour
     private bool estaGirando = false;
     private bool estaBloqueada = false;
 
+    public ObjetoCarta Carta => carta;
+
+    public void SetValorCarta(int valor)
+    {
+        carta.SetValor(valor);
+    }
+
     public void OnClick()
     {
         if (estaGirando || estaBloqueada)
+            return;
+
+        if (LevelManager.Instance == null)
             return;
 
         StartCoroutine(GirarYEvaluar());
@@ -24,21 +34,23 @@ public class CardManager : MonoBehaviour
     {
         estaGirando = true;
 
+        // Giro para mostrar carta
         yield return StartCoroutine(Girar(0f, 180f));
 
         bool acierto = LevelManager.Instance.EvaluarCarta(carta);
 
-        if (!acierto)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            yield return StartCoroutine(Girar(180f, 0f));
-        }
-        else
+        if (acierto)
         {
             estaBloqueada = true;
         }
-        
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            // Volver a ocultar
+            yield return StartCoroutine(Girar(180f, 0f));
+        }
+
         estaGirando = false;
     }
 
