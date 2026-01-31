@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Button startButton;
     [SerializeField] private Button optionsButton;
