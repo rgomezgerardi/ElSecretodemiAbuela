@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     [Header("Objetos del nivel")]
-    [SerializeField] private List<ObjetoCarta> objetosCartas;
+    [SerializeField] private List<GameObject> objetosCartas;
 
     [Header("Estado del nivel")]
     [SerializeField] private int nivelActual;
@@ -118,6 +118,17 @@ public class LevelManager : MonoBehaviour
         }
 
         for (int i = 0; i < objetosCartas.Count; i++)
-            objetosCartas[i].SetValor(pool[i]);
+        {
+            ObjetoCarta carta = objetosCartas[i].GetComponent<ObjetoCarta>();
+
+            if (carta == null)
+            {
+                Debug.LogError($"El objeto {objetosCartas[i].name} no tiene ObjetoCarta");
+                continue;
+            }
+
+            carta.SetValor(pool[i]);
+        }
     }
+
 }
