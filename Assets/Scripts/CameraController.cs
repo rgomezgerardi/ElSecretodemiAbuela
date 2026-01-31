@@ -30,6 +30,9 @@ public class CameraController : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
         {
             movingForward = true;
+            {
+                movingForward = true;
+            }
         }
         else
         {
@@ -39,13 +42,13 @@ public class CameraController : MonoBehaviour
         // Mover la cámara suavemente
         if (movingForward)
         {
-            // Mover hacia adelante
+            // Levantar la cabeza
             transform.position = Vector3.Lerp(transform.position, forwardPosition, Time.deltaTime * moveSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(forwardRotation), Time.deltaTime * moveSpeed);
         }
         else
         {
-            // Volver a la posición original
+            // Bajar la cabeza (mirar las cartas)
             transform.position = Vector3.Lerp(transform.position, originalPosition, Time.deltaTime * moveSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(originalRotation), Time.deltaTime * moveSpeed);
         }
