@@ -50,17 +50,36 @@ public class CardManager : MonoBehaviour
     {
         float tiempo = 0f;
 
+        Vector3 posicionInicial = transform.localPosition;
+        float alturaSalto = 0.2f; // ajustable
+
         while (tiempo < duracionGiro)
         {
             tiempo += Time.deltaTime;
             float t = tiempo / duracionGiro;
 
-            float anguloY = Mathf.Lerp(desde, hasta, t);
-            transform.localRotation = Quaternion.Euler(0f, anguloY, 0f);
+            // Rotación
+            float anguloZ = Mathf.Lerp(desde, hasta, t);
+            transform.localRotation = Quaternion.Euler(0f, 0f, anguloZ);
+
+            // Movimiento en Y (sube y baja)
+            float desplazamientoY;
+
+            if (t <= 0.5f)
+            {
+                desplazamientoY = Mathf.Lerp(0f, alturaSalto, t / 0.5f);
+            }
+            else
+            {
+                desplazamientoY = Mathf.Lerp(alturaSalto, 0f, (t - 0.5f) / 0.5f);
+            }
+
+            transform.localPosition = posicionInicial + Vector3.up * desplazamientoY;
 
             yield return null;
         }
 
-        transform.localRotation = Quaternion.Euler(0f, hasta, 0f);
+        transform.localRotation = Quaternion.Euler(0f, 0f, hasta);
+        transform.localPosition = posicionInicial;
     }
 }

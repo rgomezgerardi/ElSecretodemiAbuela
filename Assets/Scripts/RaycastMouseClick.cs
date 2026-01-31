@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RaycastMouseClick : MonoBehaviour
 {
@@ -6,10 +7,14 @@ public class RaycastMouseClick : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
+        if (Mouse.current == null)
             return;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!Mouse.current.leftButton.wasPressedThisFrame)
+            return;
+
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, capaCartas))
         {
@@ -17,7 +22,6 @@ public class RaycastMouseClick : MonoBehaviour
                 return;
 
             CardManager card = hit.collider.GetComponent<CardManager>();
-
             if (card != null)
                 card.OnClick();
         }
