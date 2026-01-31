@@ -939,6 +939,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b80d27164b7c0c4bb95730fa5b57a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardManager
+--- !u!1 &917870173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917870175}
+  - component: {fileID: 917870174}
+  m_Layer: 0
+  m_Name: InputMouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &917870174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917870173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c671ee961b16f4fb51bd875e1cf0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastMouseClick
+  capaCartas:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!4 &917870175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917870173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4, y: 0.105, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &918067468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099853951810923393, guid: 23c46336cd02dde46b663b9f662d9215, type: 3}
@@ -2219,3 +2266,4 @@ SceneRoots:
   - {fileID: 1523656019}
   - {fileID: 349442804}
   - {fileID: 1307199761}
+  - {fileID: 917870175}

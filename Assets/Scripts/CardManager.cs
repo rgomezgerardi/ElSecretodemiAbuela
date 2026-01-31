@@ -9,10 +9,8 @@ public class CardManager : MonoBehaviour
     [Header("Animación")]
     [SerializeField] private float duracionGiro = 0.3f;
 
-    private bool estaGirando = false;
-    private bool estaBloqueada = false;
-
-    public ObjetoCarta Carta => carta;
+    [SerializeField] private bool estaGirando;
+    [SerializeField] private bool estaBloqueada;
 
     public void SetValorCarta(int valor)
     {
@@ -21,10 +19,7 @@ public class CardManager : MonoBehaviour
 
     public void OnClick()
     {
-        if (estaGirando || estaBloqueada)
-            return;
-
-        if (LevelManager.Instance == null)
+        if (estaGirando || estaBloqueada || LevelManager.Instance == null)
             return;
 
         StartCoroutine(GirarYEvaluar());
@@ -34,21 +29,18 @@ public class CardManager : MonoBehaviour
     {
         estaGirando = true;
 
-        // Giro para mostrar carta
         yield return StartCoroutine(Girar(0f, 180f));
 
         bool acierto = LevelManager.Instance.EvaluarCarta(carta);
 
-        if (acierto)
+        if (!acierto)
         {
-            estaBloqueada = true;
+            yield return new WaitForSeconds(0.5f);
+            yield return StartCoroutine(Girar(180f, 0f));
         }
         else
         {
-            yield return new WaitForSeconds(0.5f);
-
-            // Volver a ocultar
-            yield return StartCoroutine(Girar(180f, 0f));
+            estaBloqueada = true;
         }
 
         estaGirando = false;
