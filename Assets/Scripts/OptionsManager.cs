@@ -39,12 +39,12 @@ public class OptionsManager : MonoBehaviour
     {
         // Cargar volumen
         float savedVolume = PlayerPrefs.GetFloat("Volume", 0.5f);
-        //volumeSlider.value = savedVolume;
+        volumeSlider.value = savedVolume;
         AudioListener.volume = savedVolume;
 
         // Cargar fullscreen
         int fullscreen = PlayerPrefs.GetInt("Fullscreen", 1);
-        //fullscreenToggle.isOn = fullscreen == 1;
+        fullscreenToggle.isOn = fullscreen == 1;
         Screen.fullScreen = fullscreen == 1;
     }
 }
