@@ -1,16 +1,44 @@
 using UnityEngine;
 
-public class GameManager: MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance { get; private set; }
 
-    private void Awake()
+    [Header("Progresión")]
+    [SerializeField] private int nivelActual = 1;
+
+    [SerializeField] private int[] topesPorNivel = { 5, 8, 12, 16, 20 };
+
+    public int NivelActual => nivelActual;
+
+    public int TopeCartas
     {
-        instance = this;
-
-        if (instance != null)
+        get
         {
-          DontDestroyOnLoad(gameObject);
+            int index = nivelActual - 1;
+
+            if (index < 0 || index >= topesPorNivel.Length)
+                return topesPorNivel[topesPorNivel.Length - 1];
+
+            return topesPorNivel[index];
         }
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void AvanzarNivel()
+    {
+        nivelActual = Mathf.Min(nivelActual + 1, topesPorNivel.Length);
     }
 }
