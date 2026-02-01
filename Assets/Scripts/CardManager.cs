@@ -5,6 +5,10 @@ public class CardManager : MonoBehaviour
 {
     [Header("Datos de la carta")]
     [SerializeField] private ObjetoCarta carta;
+    public ObjetoCarta Carta => carta;
+    public int ValorCarta => carta != null ? carta.ValorCarta : -1;
+    public bool EstaBocaAbajo => !estaBloqueada && !estaGirando;
+    public bool EstaBloqueada => estaBloqueada;
 
     [Header("Animación")]
     [SerializeField] private float duracionGiro = 0.3f;
@@ -12,10 +16,29 @@ public class CardManager : MonoBehaviour
     [SerializeField] private bool estaGirando;
     [SerializeField] private bool estaBloqueada;
 
+    [Header("Highlight")]
+    [SerializeField] private Renderer rend;
+    [SerializeField] private Color colorNormal = Color.white;
+    [SerializeField] private Color colorHighlight = Color.yellow;
+
+
     public void SetValorCarta(int valor)
     {
         carta.SetValor(valor);
     }
+
+    public void SetHighlight(bool estado)
+    {
+        if (estaBloqueada)
+            return;
+
+        if (rend == null)
+            return;
+
+        rend.material.color = estado ? colorHighlight : colorNormal;
+        Debug.Log("HighLight realizado");
+    }
+
 
     public void OnClick()
     {
@@ -82,4 +105,6 @@ public class CardManager : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, 0f, hasta);
         transform.localPosition = posicionInicial;
     }
+
+
 }

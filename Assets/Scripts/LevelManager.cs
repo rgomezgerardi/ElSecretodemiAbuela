@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    [Header("Cartas del nivel")]
+    [Header("Cartas del nivel (20)")]
     [SerializeField] private List<CardManager> cartas;
 
     [Header("Estado")]
@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     public float TiempoNivel => tiempoNivel;
     public float TiempoRestante => tiempoRestante;
     [SerializeField] private float tiempoRestante;
+
+    [SerializeField] private bool enModoError;
 
     private bool nivelActivo;
 
@@ -64,6 +66,9 @@ public class LevelManager : MonoBehaviour
 
         AsignarCartasRandom();
 
+        LimpiarHighlights();
+        IluminarFilaSiguiente();
+
         nivelActivo = true;
     }
 
@@ -92,19 +97,127 @@ public class LevelManager : MonoBehaviour
         {
             ultimoAcierto = valor;
 
+            LimpiarHighlights();
+
             if (ultimoAcierto == topeCartas)
+            {
                 FinNivel(true);
+            }
+            else
+            {
+                enModoError = false;
+                IluminarFilaSiguiente();
+            }
 
             return true;
         }
 
 
+        // ERROR
+        LimpiarHighlights();
+        enModoError = true;
+        IluminarError();
+
         return false;
+    }
+
+
+    private void IluminarFilaSiguiente()
+    {
+        int siguienteValor = ultimoAcierto + 1;
+
+        if (siguienteValor > topeCartas)
+            return;
+
+        int indexCarta = -1;
+
+        for (int i = 0; i < cartas.Count; i++)
+        {
+            if (cartas[i].Carta.ValorCarta == siguienteValor)
+            {
+                indexCarta = i;
+                break;
+            }
+        }
+
+        if (indexCarta == -1)
+            return;
+
+        int fila = indexCarta / 5;
+        int inicio = fila * 5;
+        int fin = inicio + 5;
+
+        for (int i = inicio; i < fin && i < cartas.Count; i++)
+            cartas[i].SetHighlight(true);
+
+        Debug.Log($"Highlight fila {fila} (valor esperado {siguienteValor})");
+    }
+
+    private void IluminarCartaCorrecta()
+    {
+        int valorCorrecto = ultimoAcierto + 1;
+
+        foreach (var carta in cartas)
+        {
+            if (carta.ValorCarta == valorCorrecto)
+            {
+                carta.SetHighlight(true);
+                break;
+            }
+        }
+    }
+
+    private void IluminarError()
+    {
+        List<CardManager> candidatas = new List<CardManager>();
+        CardManager correcta = null;
+
+        int valorCorrecto = ultimoAcierto + 1;
+
+        foreach (var carta in cartas)
+        {
+            if (!carta.EstaBocaAbajo)
+                continue;
+
+            if (carta.ValorCarta == valorCorrecto)
+            {
+                correcta = carta;
+            }
+            else
+            {
+                candidatas.Add(carta);
+            }
+        }
+
+        if (correcta == null)
+            return;
+
+        // Mezclar trampas
+        for (int i = 0; i < candidatas.Count; i++)
+        {
+            int r = Random.Range(i, candidatas.Count);
+            (candidatas[i], candidatas[r]) = (candidatas[r], candidatas[i]);
+        }
+
+        correcta.SetHighlight(true);
+
+        int trampas = Mathf.Min(2, candidatas.Count);
+        for (int i = 0; i < trampas; i++)
+            candidatas[i].SetHighlight(true);
+    }
+
+    private void LimpiarHighlights()
+    {
+        foreach (var carta in cartas)
+            carta.SetHighlight(false);
+        Debug.Log("Se limpio el Highlight");
     }
 
     private void FinNivelInterno(bool ganado)
     {
         nivelActivo = false;
+
+        LimpiarHighlights();
 
         if (ganado)
         {
@@ -121,5 +234,4 @@ public class LevelManager : MonoBehaviour
     {
         FinNivelInterno(ganado);
     }
-
 }
