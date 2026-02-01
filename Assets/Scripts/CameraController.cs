@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
         originalRotation = transform.eulerAngles;
 
         // Configurar rotación hacia adelante (mirando al enemigo)
-        forwardRotation = new Vector3(30f, originalRotation.y, originalRotation.z);
+        forwardRotation = new Vector3(5f, originalRotation.y, originalRotation.z);
     }
 
     void Update()
