@@ -95,7 +95,14 @@ public class LevelManager : MonoBehaviour
 
         if (valor == ultimoAcierto + 1 && valor <= topeCartas)
         {
+            // ACIERTO
             ultimoAcierto = valor;
+
+            // Beneficio de tiempo según nivel
+            if (NivelActual == 1 || NivelActual == 2)
+                tiempoRestante += 2f;
+            else if (NivelActual == 3 || NivelActual == 4)
+                tiempoRestante += 1f;
 
             LimpiarHighlights();
 
@@ -117,6 +124,15 @@ public class LevelManager : MonoBehaviour
         LimpiarHighlights();
         enModoError = true;
         IluminarError();
+
+        // Penalización de tiempo según nivel
+        if (NivelActual >= 1 && NivelActual <= 4)
+            tiempoRestante -= 2f;
+        else if (NivelActual == 5)
+            tiempoRestante -= 3f;
+
+        // Asegurarnos que no se pase de 0
+        tiempoRestante = Mathf.Max(tiempoRestante, 0f);
 
         return false;
     }
@@ -151,20 +167,6 @@ public class LevelManager : MonoBehaviour
             cartas[i].SetHighlight(true);
 
         Debug.Log($"Highlight fila {fila} (valor esperado {siguienteValor})");
-    }
-
-    private void IluminarCartaCorrecta()
-    {
-        int valorCorrecto = ultimoAcierto + 1;
-
-        foreach (var carta in cartas)
-        {
-            if (carta.ValorCarta == valorCorrecto)
-            {
-                carta.SetHighlight(true);
-                break;
-            }
-        }
     }
 
     private void IluminarError()
@@ -216,13 +218,21 @@ public class LevelManager : MonoBehaviour
     private void FinNivelInterno(bool ganado)
     {
         nivelActivo = false;
-
         LimpiarHighlights();
 
         if (ganado)
         {
             GameManager.Instance.GuardarBonificacion(tiempoRestante);
             GameManager.Instance.AvanzarNivel();
+
+            if (GameManager.Instance.NivelActual < 5)
+            {
+                ReiniciarNivel();
+            }
+            else
+            {
+                Debug.Log("Juego completado");
+            }
         }
         else
         {
@@ -234,4 +244,22 @@ public class LevelManager : MonoBehaviour
     {
         FinNivelInterno(ganado);
     }
+
+    public void ReiniciarNivel()
+    {
+        StopAllCoroutines();
+
+        nivelActivo = false;
+        enModoError = false;
+        ultimoAcierto = 0;
+
+        LimpiarHighlights();
+
+        // Resetear estado de las cartas
+        foreach (var carta in cartas)
+            carta.ResetCarta();
+
+        InicializarNivel();
+    }
+
 }

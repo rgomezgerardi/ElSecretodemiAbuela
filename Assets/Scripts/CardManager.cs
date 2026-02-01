@@ -21,6 +21,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] private Color colorNormal = Color.white;
     [SerializeField] private Color colorHighlight = Color.yellow;
 
+    private bool cancelarCoroutine = false;
+
 
     public void SetValorCarta(int valor)
     {
@@ -51,14 +53,34 @@ public class CardManager : MonoBehaviour
     private IEnumerator GirarYEvaluar()
     {
         estaGirando = true;
+        cancelarCoroutine = false;
 
         yield return StartCoroutine(Girar(0f, 180f));
 
+        if (cancelarCoroutine)
+        {
+            estaGirando = false;
+            yield break;
+        }
+
         bool acierto = LevelManager.Instance.EvaluarCarta(carta);
+
+        if (cancelarCoroutine)
+        {
+            estaGirando = false;
+            yield break;
+        }
 
         if (!acierto)
         {
             yield return new WaitForSeconds(0.5f);
+
+            if (cancelarCoroutine)
+            {
+                estaGirando = false;
+                yield break;
+            }
+
             yield return StartCoroutine(Girar(180f, 0f));
         }
         else
@@ -106,5 +128,15 @@ public class CardManager : MonoBehaviour
         transform.localPosition = posicionInicial;
     }
 
+    public void ResetCarta()
+    {
+        cancelarCoroutine = true;  // bloquea cualquier coroutine en ejecución
+        StopAllCoroutines();
 
+        estaGirando = false;
+        estaBloqueada = false;
+
+        transform.localRotation = Quaternion.identity;
+        SetHighlight(false);
+    }
 }
