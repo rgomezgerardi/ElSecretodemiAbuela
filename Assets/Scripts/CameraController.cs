@@ -3,54 +3,29 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    public Vector3 originalPosition;
-    public Vector3 originalRotation;
+    public Vector3 originalRotation; // rotación inicial (Inspector o Start)
+    public Vector3 forwardRotation;  // rotación al mirar hacia adelante
 
-    public Vector3 forwardPosition;
-    public Vector3 forwardRotation;
-
-    public float moveSpeed = 5f;
-
-    private bool movingForward = false;
+    public float rotateSpeed = 5f;   // velocidad de rotación
 
     void Start()
     {
-        // Guardar la posición y rotación inicial
-        originalPosition = transform.position;
+        // Guardar la rotación inicial
         originalRotation = transform.eulerAngles;
 
-        // Configurar posición hacia adelante (hacia el enemigo)
-        forwardPosition = originalPosition + new Vector3(0, 0.5f, 3f);
-        forwardRotation = new Vector3(30f, 0f, 0f);
+        // Configurar rotación hacia adelante (mirando al enemigo)
+        forwardRotation = new Vector3(30f, originalRotation.y, originalRotation.z);
     }
 
     void Update()
     {
-        // Detectar si se presiona W
-        if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
-        {
-            movingForward = true;
-            {
-                movingForward = true;
-            }
-        }
-        else
-        {
-            movingForward = false;
-        }
+        // Determinar rotación objetivo según W
+        Vector3 targetRotation = originalRotation;
 
-        // Mover la cámara suavemente
-        if (movingForward)
-        {
-            // Levantar la cabeza
-            transform.position = Vector3.Lerp(transform.position, forwardPosition, Time.deltaTime * moveSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(forwardRotation), Time.deltaTime * moveSpeed);
-        }
-        else
-        {
-            // Bajar la cabeza (mirar las cartas)
-            transform.position = Vector3.Lerp(transform.position, originalPosition, Time.deltaTime * moveSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(originalRotation), Time.deltaTime * moveSpeed);
-        }
+        if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
+            targetRotation = forwardRotation;
+
+        // Suavizar rotación
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotateSpeed);
     }
 }

@@ -76,10 +76,10 @@ public class LevelManager : MonoBehaviour
     private void AsignarCartasRandom()
     {
         List<int> pool = new List<int>();
-
         for (int i = 1; i <= 20; i++)
             pool.Add(i);
 
+        // Mezclar
         for (int i = 0; i < pool.Count; i++)
         {
             int r = Random.Range(i, pool.Count);
@@ -87,8 +87,11 @@ public class LevelManager : MonoBehaviour
         }
 
         for (int i = 0; i < cartas.Count; i++)
+        {
             cartas[i].SetValorCarta(pool[i]);
+        }
     }
+
 
     public bool EvaluarCarta(ObjetoCarta carta)
     {
@@ -137,7 +140,6 @@ public class LevelManager : MonoBehaviour
 
         return false;
     }
-
 
     private void IluminarFilaSiguiente()
     {

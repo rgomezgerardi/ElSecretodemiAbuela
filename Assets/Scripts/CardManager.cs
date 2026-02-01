@@ -10,6 +10,10 @@ public class CardManager : MonoBehaviour
     public bool EstaBocaAbajo => !estaBloqueada && !estaGirando;
     public bool EstaBloqueada => estaBloqueada;
 
+    [Header("Frontal")]
+    [SerializeField] private Transform cuboFrontal;
+    private Renderer rendFrontal;
+
     [Header("Animación")]
     [SerializeField] private float duracionGiro = 0.3f;
 
@@ -23,10 +27,32 @@ public class CardManager : MonoBehaviour
 
     private bool cancelarCoroutine = false;
 
+    void Awake()
+    {
+        if (cuboFrontal != null)
+            rendFrontal = cuboFrontal.GetComponent<Renderer>();
+    }
+
+    public void AsignarTextura(Texture2D textura)
+    {
+        if (rendFrontal == null || textura == null)
+            return;
+
+        rendFrontal.material = new Material(rendFrontal.material);
+        rendFrontal.material.mainTexture = textura;
+    }
 
     public void SetValorCarta(int valor)
     {
         carta.SetValor(valor);
+
+        // -1 porque el array/lista es 0-based
+        int index = valor - 1;
+
+        if (GameManager.Instance.cartasFrente != null && GameManager.Instance.cartasFrente != null && index >= 0 && index < GameManager.Instance.cartasFrente.Count)
+        {
+            AsignarTextura(GameManager.Instance.cartasFrente[index]);
+        }
     }
 
     public void SetHighlight(bool estado)

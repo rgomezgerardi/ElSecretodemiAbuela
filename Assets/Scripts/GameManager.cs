@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public float BonificacionTiempo => bonificacionTiempo;
 
     public int ganoPartida;
+
+    [Header("Frontal de cartas")]
+    public List<Texture2D> cartasFrente = new List<Texture2D>();
 
     public int TopeCartas
     {
