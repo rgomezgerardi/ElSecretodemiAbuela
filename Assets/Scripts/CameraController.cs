@@ -1,31 +1,30 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    public Vector3 originalRotation; // rotaciÛn inicial (Inspector o Start)
-    public Vector3 forwardRotation;  // rotaciÛn al mirar hacia adelante
+    public Vector3 originalRotation;
+    public Vector3 forwardRotation;
+    public float rotateSpeed = 5f;
 
-    public float rotateSpeed = 5f;   // velocidad de rotaciÛn
+    public bool controlActivo = true; // ‚Üê NUEVO
 
     void Start()
     {
-        // Guardar la rotaciÛn inicial
         originalRotation = transform.eulerAngles;
-
-        // Configurar rotaciÛn hacia adelante (mirando al enemigo)
         forwardRotation = new Vector3(5f, originalRotation.y, originalRotation.z);
     }
 
     void Update()
     {
-        // Determinar rotaciÛn objetivo seg˙n W
+        if (!controlActivo) // ‚Üê NUEVO: No hacer nada si est√° desactivado
+            return;
+
         Vector3 targetRotation = originalRotation;
 
         if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
             targetRotation = forwardRotation;
 
-        // Suavizar rotaciÛn
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotateSpeed);
     }
 }

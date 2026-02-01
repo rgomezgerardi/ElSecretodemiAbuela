@@ -1,3 +1,4 @@
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +27,10 @@ public class LevelManager : MonoBehaviour
 
     [Header("Menu Pause")]
     [SerializeField] private GameObject panelMenuPause;
+
+    [Header("Sistema de Errores")]
+    [SerializeField] private int erroresConsecutivos = 0;
+    [SerializeField] private int maxErroresParaReaccion = 3;
 
     private bool nivelActivo;
 
@@ -102,6 +107,82 @@ public class LevelManager : MonoBehaviour
     }
 
 
+    private IEnumerator ReaccionEnemigo()
+    {
+        // 1. Levantar cabeza (mirar al enemigo)
+        CameraController camController = Camera.main.GetComponent<CameraController>();
+        if (camController != null)
+        {
+            yield return StartCoroutine(LevantarCabeza(camController));
+        }
+
+        // 2. Screen shake
+        yield return StartCoroutine(ScreenShake());
+
+        // 3. Volver a posici贸n normal
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator LevantarCabeza(CameraController camController)
+    {
+        // Desactivar control manual
+        camController.controlActivo = false;
+
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        Quaternion rotacionInicial = camController.transform.rotation;
+        Quaternion rotacionHaciaEnemigo = Quaternion.Euler(camController.forwardRotation);
+
+        // Levantar cabeza r谩pidamente
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            camController.transform.rotation = Quaternion.Lerp(rotacionInicial, rotacionHaciaEnemigo, t);
+            yield return null;
+        }
+
+        // Mantener mirando 4 segundos
+        yield return new WaitForSeconds(2f);
+
+        // Volver a posici贸n original
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            camController.transform.rotation = Quaternion.Lerp(rotacionHaciaEnemigo, Quaternion.Euler(camController.originalRotation), t);
+            yield return null;
+        }
+
+        // Reactivar control manual
+        camController.controlActivo = true;
+    }
+
+    private IEnumerator ScreenShake()
+    {
+        Camera cam = Camera.main;
+        Vector3 posicionOriginal = cam.transform.localPosition;
+
+        float duracion = 0.5f;
+        float magnitud = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < duracion)
+        {
+            float x = Random.Range(-1f, 1f) * magnitud;
+            float y = Random.Range(-1f, 1f) * magnitud;
+
+            cam.transform.localPosition = posicionOriginal + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        cam.transform.localPosition = posicionOriginal;
+    }
+
     public bool EvaluarCarta(ObjetoCarta carta)
     {
         int valor = carta.ValorCarta;
@@ -110,8 +191,8 @@ public class LevelManager : MonoBehaviour
         {
             // ACIERTO
             ultimoAcierto = valor;
+            erroresConsecutivos = 0; // Resetear errores en acierto
 
-            // Beneficio de tiempo seg鷑 nivel
             if (NivelActual == 1 || NivelActual == 2)
                 tiempoRestante += 2f;
             else if (NivelActual == 3 || NivelActual == 4)
@@ -132,20 +213,26 @@ public class LevelManager : MonoBehaviour
             return true;
         }
 
-
         // ERROR
+        erroresConsecutivos++;
+
         LimpiarHighlights();
         enModoError = true;
         IluminarError();
 
-        // Penalizaci髇 de tiempo seg鷑 nivel
         if (NivelActual >= 1 && NivelActual <= 4)
             tiempoRestante -= 2f;
         else if (NivelActual == 5)
             tiempoRestante -= 3f;
 
-        // Asegurarnos que no se pase de 0
         tiempoRestante = Mathf.Max(tiempoRestante, 0f);
+
+        // Si alcanz贸 3 errores, activar reacci贸n
+        if (erroresConsecutivos >= maxErroresParaReaccion)
+        {
+            StartCoroutine(ReaccionEnemigo());
+            erroresConsecutivos = 0; // Resetear despu茅s de reacci贸n
+        }
 
         return false;
     }
@@ -267,10 +354,10 @@ public class LevelManager : MonoBehaviour
         nivelActivo = false;
         enModoError = false;
         ultimoAcierto = 0;
+        erroresConsecutivos = 0; // Agregar esto
 
         LimpiarHighlights();
 
-        // Resetear estado de las cartas
         foreach (var carta in cartas)
             carta.ResetCarta();
 
@@ -309,5 +396,6 @@ public class LevelManager : MonoBehaviour
     {
         DesactivarPausaInterno();
     }
+
 
 }
