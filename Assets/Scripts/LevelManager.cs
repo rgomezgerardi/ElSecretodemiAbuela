@@ -228,7 +228,7 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.GuardarBonificacion(tiempoRestante);
             GameManager.Instance.AvanzarNivel();
 
-            if (GameManager.Instance.NivelActual < 5)
+            if (GameManager.Instance.NivelActual <= 5)
             {
                 ReiniciarNivel();
             }
