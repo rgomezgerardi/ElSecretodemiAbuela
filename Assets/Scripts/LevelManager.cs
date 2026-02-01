@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -231,12 +232,14 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Juego completado");
+                GameManager.Instance.ganoPartida = 1;
+                SceneManager.LoadScene("GanaPierde");
             }
         }
         else
         {
-            GameManager.Instance.GuardarBonificacion(0f);
+            GameManager.Instance.ganoPartida = 0;
+            SceneManager.LoadScene("GanaPierde");
         }
     }
 

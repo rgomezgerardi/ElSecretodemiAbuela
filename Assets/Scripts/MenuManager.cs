@@ -17,11 +17,7 @@ public class MenuManager : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
         optionsButton.onClick.AddListener(OpenOptions);
         backButton.onClick.AddListener(CloseOptions);
-
-        if (quitButton != null)
-        {
-            quitButton.onClick.AddListener(QuitGame);
-        }
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     private void StartGame()

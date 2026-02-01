@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int NivelActual => nivelActual;
     public float BonificacionTiempo => bonificacionTiempo;
 
+    public int ganoPartida;
+
     public int TopeCartas
     {
         get
