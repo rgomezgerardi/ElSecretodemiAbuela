@@ -2282,7 +2282,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 8b8792a71cbaf524ba8363ae797dc825, type: 3}
   - {fileID: 2800000, guid: d6f0e8769cc3c9e438b76075c7d580e9, type: 3}
   - {fileID: 2800000, guid: b967796745bbff947ab03ef6a1d7cdaa, type: 3}
-  panelMenuPause: {fileID: 0}
 --- !u!1 &1055366592
 GameObject:
   m_ObjectHideFlags: 0

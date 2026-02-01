@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
                 enemigo.SetActive(false);
         }
 
-        if (index >= 0 && index < enemigos.Count)
+        if (index >= 0 && index <= enemigos.Count)
         {
             enemigoActivo = enemigos[index];
             enemigoActivo.SetActive(true);
