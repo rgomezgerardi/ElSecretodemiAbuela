@@ -155,7 +155,7 @@ Camera:
   m_GameObject: {fileID: 84520995}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2261,6 +2261,27 @@ MonoBehaviour:
   nivelActual: 1
   topesPorNivel: 05000000080000000c0000001000000014000000
   ganoPartida: 0
+  cartasFrente:
+  - {fileID: 2800000, guid: 84d12daed5330e54b84320dfdfa089a2, type: 3}
+  - {fileID: 2800000, guid: bd46192557fcc66449e2c305b3bf250e, type: 3}
+  - {fileID: 2800000, guid: 8d05e18350827bb4994328298041f5c7, type: 3}
+  - {fileID: 2800000, guid: 2afff3462de1dd6418b4a767485d7924, type: 3}
+  - {fileID: 2800000, guid: 50e817b7e0d1e1742bd8d2690ecc2ba2, type: 3}
+  - {fileID: 2800000, guid: 8b03d7fe2073e364996f16cf677ff790, type: 3}
+  - {fileID: 2800000, guid: 003d2bc6e54260d4e8ec43f0a312c9fb, type: 3}
+  - {fileID: 2800000, guid: 1075cec541bf06142b1053fb2db6076a, type: 3}
+  - {fileID: 2800000, guid: 2b47668c9b098a44bbdbf0e68d965fd9, type: 3}
+  - {fileID: 2800000, guid: 98545c42921d15f4fa6a627b31f7fb35, type: 3}
+  - {fileID: 2800000, guid: bbea6a080d46eaf45a02bdf60797e31f, type: 3}
+  - {fileID: 2800000, guid: a13022cc60596254599506fc0c3202b8, type: 3}
+  - {fileID: 2800000, guid: bfd866e0584e51f489d3de26f36f0da0, type: 3}
+  - {fileID: 2800000, guid: ac6342e1d53c73e428fccc543b5af2e3, type: 3}
+  - {fileID: 2800000, guid: 472c613c710651f4d87aedb246c1b97c, type: 3}
+  - {fileID: 2800000, guid: ea34e62c7270dc2419f2181d3a283900, type: 3}
+  - {fileID: 2800000, guid: 866c75c72c472ce419b22e5119fa9d17, type: 3}
+  - {fileID: 2800000, guid: 8b8792a71cbaf524ba8363ae797dc825, type: 3}
+  - {fileID: 2800000, guid: d6f0e8769cc3c9e438b76075c7d580e9, type: 3}
+  - {fileID: 2800000, guid: b967796745bbff947ab03ef6a1d7cdaa, type: 3}
 --- !u!1 &1055366592
 GameObject:
   m_ObjectHideFlags: 0

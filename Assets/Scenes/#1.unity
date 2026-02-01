@@ -312,8 +312,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -425,11 +425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd6b57c837fdb14b9300d60526ec6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0}
-  forwardPosition: {x: 0, y: 0, z: 0}
   forwardRotation: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
+  rotateSpeed: 5
 --- !u!1 &349442803
 GameObject:
   m_ObjectHideFlags: 0
