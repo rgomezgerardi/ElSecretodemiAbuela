@@ -73,9 +73,7 @@ public class MenuManager : MonoBehaviour
         historiaImage.texture = listaHistoria[indiceHistoria];
     }
 
-    // =========================
-    // MENÚ
-    // =========================
+
     private void OpenOptions()
     {
         menuPanel.SetActive(false);
