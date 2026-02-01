@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8023833883949885784, guid: c13588ddd23cd9f45b82456fd36929e4, type: 3}
+      propertyPath: targetPosition
+      value: 
+      objectReference: {fileID: 330585546}
     - target: {fileID: 8321220072318263100, guid: c13588ddd23cd9f45b82456fd36929e4, type: 3}
       propertyPath: moveTimer
       value: 10
