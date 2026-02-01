@@ -250,6 +250,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             GameManager.Instance.ganoPartida = 0;
+            GameManager.Instance.ResetearInfo();
             SceneManager.LoadScene("GanaPierde");
         }
     }

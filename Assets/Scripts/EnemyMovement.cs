@@ -129,7 +129,7 @@ public class EnemyMovement : MonoBehaviour
             audioSource = enemigoActivo.AddComponent<AudioSource>();
             audioSource.clip = sonidoEnemigo;
             audioSource.loop = true;
-            audioSource.spatialBlend = 10f;
+            audioSource.spatialBlend = 1f;
             audioSource.minDistance = 0.1f;
             audioSource.maxDistance = radioAuditivo;
             audioSource.volume = volumenBase;
