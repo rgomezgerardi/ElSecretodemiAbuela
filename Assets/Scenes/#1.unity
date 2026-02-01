@@ -254,6 +254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7261358306285575853, guid: c13588ddd23cd9f45b82456fd36929e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8321220072318263100, guid: c13588ddd23cd9f45b82456fd36929e4, type: 3}
       propertyPath: moveTimer
       value: 10
