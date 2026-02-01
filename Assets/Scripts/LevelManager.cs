@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -22,6 +23,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float tiempoRestante;
 
     [SerializeField] private bool enModoError;
+
+    [Header("Menu Pause")]
+    [SerializeField] private GameObject panelMenuPause;
 
     private bool nivelActivo;
 
@@ -52,6 +56,11 @@ public class LevelManager : MonoBehaviour
         {
             tiempoRestante = 0f;
             FinNivel(false);
+        }
+
+        if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            ActivarPausa();
         }
     }
 
@@ -265,6 +274,37 @@ public class LevelManager : MonoBehaviour
             carta.ResetCarta();
 
         InicializarNivel();
+    }
+
+    private void ActivarPausaInterno()
+    {
+        panelMenuPause.SetActive(true);
+        Time.timeScale = 0f;
+
+        RectTransform rt = panelMenuPause.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.anchoredPosition = Vector2.zero;
+            rt.localScale = Vector3.one;
+        }
+
+        panelMenuPause.transform.SetAsLastSibling();
+    }
+
+    private void DesactivarPausaInterno()
+    {
+        panelMenuPause.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void ActivarPausa()
+    {
+        ActivarPausaInterno();
+    }
+
+    public void DesactivarPausa()
+    {
+        DesactivarPausaInterno();
     }
 
 }

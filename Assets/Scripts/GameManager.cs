@@ -53,4 +53,7 @@ public class GameManager : MonoBehaviour
     {
         bonificacionTiempo = Mathf.Max(0f, tiempoSobrante);
     }
+
+    
+
 }

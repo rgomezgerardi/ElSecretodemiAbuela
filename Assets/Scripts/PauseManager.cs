@@ -1,84 +1,52 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance;
 
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private InputActionReference pauseAction;
-
-    private bool isPaused;
+    [Header("Botones")]
+    [SerializeField] private Button resumeBtn;
+    [SerializeField] private Button restartBtn;
+    [SerializeField] private Button menuBtn;
 
     void Awake()
     {
-        if (Instance != null)
-        {
+        if (Instance == null)
+            Instance = this;
+        else
             Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void OnEnable()
-    {
-        pauseAction.action.performed += OnPause;
-        pauseAction.action.Enable();
-    }
-
-    void OnDisable()
-    {
-        pauseAction.action.performed -= OnPause;
-        pauseAction.action.Disable();
     }
 
     void Start()
     {
-        pauseMenu.SetActive(false);
+        // Configurar listeners
+        if (resumeBtn != null)
+            resumeBtn.onClick.AddListener(ResumeGame);
+
+        if (restartBtn != null)
+            restartBtn.onClick.AddListener(RestartLevel);
+
+        if (menuBtn != null)
+            menuBtn.onClick.AddListener(GoToMainMenu);
     }
 
-    private void OnPause(InputAction.CallbackContext ctx)
+    private void ResumeGame()
     {
-        TogglePause();
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.DesactivarPausa();
     }
 
-    public void TogglePause()
+    private void RestartLevel()
     {
-        isPaused = !isPaused;
-
-        Time.timeScale = isPaused ? 0f : 1f;
-        AudioListener.pause = isPaused;
-
-        pauseMenu.SetActive(isPaused);
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.ReiniciarNivel();
+        ResumeGame();
     }
 
-    public void ResumeGame()
+    private void GoToMainMenu()
     {
-        if (!isPaused) return;
-
-        isPaused = false;
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
-
-        pauseMenu.SetActive(false);
-    }
-
-    public void RestartLevel()
-    {
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void GoToMainMenu()
-    {
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
-
         SceneManager.LoadScene("MainMenu");
     }
 }
