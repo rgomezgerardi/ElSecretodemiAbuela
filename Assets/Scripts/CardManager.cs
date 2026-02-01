@@ -72,6 +72,7 @@ public class CardManager : MonoBehaviour
     {
         if (estaGirando || estaBloqueada || LevelManager.Instance == null)
             return;
+        SoundManager.Instance.PlayClickSound();
 
         StartCoroutine(GirarYEvaluar());
     }
