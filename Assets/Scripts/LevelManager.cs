@@ -280,6 +280,7 @@ public class LevelManager : MonoBehaviour
     {
         panelMenuPause.SetActive(true);
         Time.timeScale = 0f;
+        SoundManager.Instance.PausarMusicaAmbiental();
 
         RectTransform rt = panelMenuPause.GetComponent<RectTransform>();
         if (rt != null)
@@ -295,6 +296,7 @@ public class LevelManager : MonoBehaviour
     {
         panelMenuPause.SetActive(false);
         Time.timeScale = 1f;
+        SoundManager.Instance.PlayMusicaAmbiental();
     }
 
     public void ActivarPausa()
