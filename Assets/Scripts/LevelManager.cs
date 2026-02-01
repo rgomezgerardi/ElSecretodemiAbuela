@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
 
     [Header("Menu Pause")]
     [SerializeField] private GameObject panelMenuPause;
-    [SerializeField] private GameObject panelCambiarRonda;
 
     [Header("Sistema de Errores")]
     [SerializeField] private int erroresConsecutivos = 0;
@@ -72,11 +71,10 @@ public class LevelManager : MonoBehaviour
 
     private void InicializarNivel()
     {
-        panelCambiarRonda.SetActive(true);
-        StartCoroutine(ActivarPanelCambiarRondaInterno());
+        nivelActivo = false;
+
         nivelActual = GameManager.Instance.NivelActual;
         topeCartas = GameManager.Instance.TopeCartas;
-
         ultimoAcierto = 0;
 
         tiempoNivel = 60f + GameManager.Instance.BonificacionTiempo;
@@ -86,8 +84,9 @@ public class LevelManager : MonoBehaviour
         EnemyMovement.Instance.ActivarPorNivelMask();
         LimpiarHighlights();
         IluminarFilaSiguiente();
-        OcultarPanelCambiarRondaInterno();
+
         nivelActivo = true;
+
     }
 
     private void AsignarCartasRandom()
@@ -398,21 +397,5 @@ public class LevelManager : MonoBehaviour
     public void DesactivarPausa()
     {
         DesactivarPausaInterno();
-    }
-
-    private IEnumerator ActivarPanelCambiarRondaInterno()
-    {
-        Debug.Log("Ingreso panel ronda");
-        
-        Time.timeScale = 0f;
-        yield return new WaitForSeconds(5);
-        OcultarPanelCambiarRondaInterno();
-    }
-
-    private void OcultarPanelCambiarRondaInterno()
-    {
-        panelCambiarRonda.SetActive(false);
-        Time.timeScale = 1f;
-        
     }
 }
