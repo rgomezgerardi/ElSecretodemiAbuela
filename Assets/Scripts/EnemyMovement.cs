@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public static EnemyMovement Instance { get; private set; }
     [Header("Prefabs por dificultad")]
     [SerializeField] private List<GameObject> enemigos;
 
@@ -14,6 +15,11 @@ public class EnemyMovement : MonoBehaviour
 
     private GameObject enemigoActivo;
     private bool activo;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -58,13 +64,23 @@ public class EnemyMovement : MonoBehaviour
     {
         int nivel = LevelManager.Instance.NivelActual;
         int index = ObtenerIndexPorNivel(nivel);
+        foreach (var enemigo in enemigos)
+        {
+            if (enemigo != null)
+                enemigo.SetActive(false);
+        }
 
-        if (index < 0 || index >= enemigos.Count)
-            return;
+        if (index >= 0 && index < enemigos.Count)
+        {
+            enemigoActivo = enemigos[index];
+            enemigoActivo.SetActive(true);
+            enemigoActivo.transform.position = startPosition;
+        }
+    }
 
-        enemigoActivo = enemigos[index];
-        enemigoActivo.SetActive(true);
-        enemigoActivo.transform.position = startPosition;
+    public void ActivarPorNivelMask()
+    {
+        ActivarPorNivel();
     }
 
     private int ObtenerIndexPorNivel(int nivel)

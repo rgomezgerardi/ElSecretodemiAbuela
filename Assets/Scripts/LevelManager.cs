@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
         tiempoRestante = tiempoNivel;
 
         AsignarCartasRandom();
-
+        EnemyMovement.Instance.ActivarPorNivelMask();
         LimpiarHighlights();
         IluminarFilaSiguiente();
 
