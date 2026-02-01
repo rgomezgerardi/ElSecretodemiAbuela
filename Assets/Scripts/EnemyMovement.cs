@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class EnemyMovement : MonoBehaviour
 
     private GameObject enemigoActivo;
     private bool activo;
+
+    [Header("Sonido del enemigo")]
+    [SerializeField] private AudioClip sonidoEnemigo;
+    [SerializeField] private float volumenBase = 1f;
+    [SerializeField] private float radioAuditivo = 5f;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -32,6 +39,18 @@ public class EnemyMovement : MonoBehaviour
 
         DesactivarTodos();
         ActivarPorNivel();
+
+        if (enemigoActivo != null)
+        {
+            audioSource = enemigoActivo.AddComponent<AudioSource>();
+            audioSource.clip = sonidoEnemigo;
+            audioSource.loop = true;
+            audioSource.spatialBlend = 1f;
+            audioSource.minDistance = 0.1f;
+            audioSource.maxDistance = radioAuditivo;
+            audioSource.volume = volumenBase;
+            audioSource.Play();
+        }
 
         activo = true;
     }
@@ -104,6 +123,19 @@ public class EnemyMovement : MonoBehaviour
     {
         DesactivarTodos();
         ActivarPorNivel();
+
+        if (enemigoActivo != null && sonidoEnemigo != null)
+        {
+            audioSource = enemigoActivo.AddComponent<AudioSource>();
+            audioSource.clip = sonidoEnemigo;
+            audioSource.loop = true;
+            audioSource.spatialBlend = 10f;
+            audioSource.minDistance = 0.1f;
+            audioSource.maxDistance = radioAuditivo;
+            audioSource.volume = volumenBase;
+            audioSource.Play();
+        }
+
         activo = true;
     }
 }
