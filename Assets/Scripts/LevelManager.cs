@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
 
     [Header("Tiempo")]
     [SerializeField] private float tiempoNivel;
+    public float TiempoNivel => tiempoNivel;
+    public float TiempoRestante => tiempoRestante;
     [SerializeField] private float tiempoRestante;
 
     private bool nivelActivo;
@@ -98,7 +100,7 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
-    private void FinNivel(bool ganado)
+    private void FinNivelInterno(bool ganado)
     {
         nivelActivo = false;
 
@@ -111,5 +113,10 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.Instance.GuardarBonificacion(0f);
         }
+    }
+
+    public void FinNivel(bool ganado)
+    {
+        FinNivelInterno(ganado);
     }
 }
