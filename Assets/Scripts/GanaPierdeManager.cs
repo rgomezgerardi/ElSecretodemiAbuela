@@ -22,11 +22,11 @@ public class GanaPierdeManager : MonoBehaviour
 
         if (ganaPartida == 1)
         {
-            tituloGanPierde.text = "YOU SURVIVE";
+            tituloGanPierde.text = "HAS SOBREVIVIDO!";
         }
         else
         {
-            tituloGanPierde.text = "YOU ARE DEAD";
+            tituloGanPierde.text = "HAS MUERTO...";
         }
 
         // Configurar listener del botón
