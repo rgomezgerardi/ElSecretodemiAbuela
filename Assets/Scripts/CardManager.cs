@@ -63,8 +63,23 @@ public class CardManager : MonoBehaviour
         if (rend == null)
             return;
 
-        rend.material.color = estado ? colorHighlight : colorNormal;
-        Debug.Log("HighLight realizado");
+        Material mat = rend.material;
+
+        // Color base
+        mat.color = estado ? colorHighlight : colorNormal;
+
+        if (estado)
+        {
+            // Activar emisión
+            mat.EnableKeyword("_EMISSION");
+            mat.SetColor("_EmissionColor", colorHighlight);
+        }
+        else
+        {
+            // Desactivar emisión
+            mat.SetColor("_EmissionColor", Color.black);
+            mat.DisableKeyword("_EMISSION");
+        }
     }
 
 
