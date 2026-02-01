@@ -10,11 +10,14 @@ public class LevelManager : MonoBehaviour
 
     [Header("Estado")]
     [SerializeField] private int nivelActual;
+    public int NivelActual => nivelActual;
     [SerializeField] private int topeCartas;
     [SerializeField] private int ultimoAcierto;
 
     [Header("Tiempo")]
     [SerializeField] private float tiempoNivel;
+    public float TiempoNivel => tiempoNivel;
+    public float TiempoRestante => tiempoRestante;
     [SerializeField] private float tiempoRestante;
 
     private bool nivelActivo;
@@ -95,10 +98,11 @@ public class LevelManager : MonoBehaviour
             return true;
         }
 
+
         return false;
     }
 
-    private void FinNivel(bool ganado)
+    private void FinNivelInterno(bool ganado)
     {
         nivelActivo = false;
 
@@ -112,4 +116,10 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.GuardarBonificacion(0f);
         }
     }
+
+    public void FinNivel(bool ganado)
+    {
+        FinNivelInterno(ganado);
+    }
+
 }
