@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Estado")]
     [SerializeField] private int nivelActual;
+    public int NivelActual => nivelActual;
     [SerializeField] private int topeCartas;
     [SerializeField] private int ultimoAcierto;
 
@@ -97,6 +98,7 @@ public class LevelManager : MonoBehaviour
             return true;
         }
 
+
         return false;
     }
 
@@ -119,4 +121,5 @@ public class LevelManager : MonoBehaviour
     {
         FinNivelInterno(ganado);
     }
+
 }
