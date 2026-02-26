@@ -7,7 +7,10 @@ public class CameraController : MonoBehaviour
     public Vector3 forwardRotation;
     public float rotateSpeed = 5f;
 
-    public bool controlActivo = true; // ← NUEVO
+    public bool controlActivo = true;
+
+    private bool mirarPorTeclado = false;
+    private bool mirarPorBoton = false;
 
     void Start()
     {
@@ -17,14 +20,31 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!controlActivo) // ← NUEVO: No hacer nada si está desactivado
+        if (!controlActivo)
             return;
 
-        Vector3 targetRotation = originalRotation;
+        // Leer teclado sin pisar el botón
+        if (Keyboard.current != null)
+            mirarPorTeclado = Keyboard.current.wKey.isPressed;
 
-        if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
-            targetRotation = forwardRotation;
+        bool mirarEnemy = mirarPorTeclado || mirarPorBoton;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotateSpeed);
+        Vector3 targetRotation = mirarEnemy ? forwardRotation : originalRotation;
+
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            Quaternion.Euler(targetRotation),
+            Time.deltaTime * rotateSpeed
+        );
+    }
+
+    public void BotonPresionado()
+    {
+        mirarPorBoton = true;
+    }
+
+    public void BotonSoltado()
+    {
+        mirarPorBoton = false;
     }
 }
