@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!controlActivo)
+        if (!controlActivo) // ← NUEVO: No hacer nada si está desactivado
             return;
 
         // Leer teclado sin pisar el botón
@@ -28,8 +28,25 @@ public class CameraController : MonoBehaviour
             mirarPorTeclado = Keyboard.current.wKey.isPressed;
 
         bool mirarEnemy = mirarPorTeclado || mirarPorBoton;
-
+        
         Vector3 targetRotation = mirarEnemy ? forwardRotation : originalRotation;
+
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            Quaternion.Euler(targetRotation),
+            Time.deltaTime * rotateSpeed
+        );
+        
+        bool wPressed = Keyboard.current != null && Keyboard.current.wKey.isPressed;
+
+        // ── Cambios feature/gamepad-support ──────────────────────────
+        // Stick izquierdo hacia arriba o D-Pad arriba replican la funcionalidad de W
+        bool gamepadUp = Gamepad.current != null &&
+                         (Gamepad.current.leftStick.ReadValue().y > 0.5f ||
+                          Gamepad.current.dpad.up.isPressed);
+
+        if (wPressed || gamepadUp)
+            targetRotation = forwardRotation;
 
         transform.rotation = Quaternion.Lerp(
             transform.rotation,

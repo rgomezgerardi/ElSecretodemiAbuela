@@ -47,6 +47,7 @@ public class PauseManager : MonoBehaviour
 
     private void GoToMainMenu()
     {
+        Time.timeScale = 1f; // [gamepad-support] evita que la escena cargue con timeScale 0 si se venía de pausa
         SceneManager.LoadScene("MainMenu");
     }
 }

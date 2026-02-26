@@ -67,9 +67,7 @@ public class LevelManager : MonoBehaviour
         }
 
         if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
-        {
             ActivarPausa();
-        }
     }
 
     private void InicializarNivel()
@@ -89,7 +87,6 @@ public class LevelManager : MonoBehaviour
         IluminarFilaSiguiente();
 
         nivelActivo = true;
-
     }
 
     private void AsignarCartasRandom()
@@ -111,25 +108,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
     private IEnumerator ReaccionEnemigo()
     {
-        // 1. Levantar cabeza (mirar al enemigo)
         CameraController camController = Camera.main.GetComponent<CameraController>();
         if (camController != null)
-        {
             yield return StartCoroutine(LevantarCabeza(camController));
-        }
 
-        // 2. Screen shake
         yield return StartCoroutine(ScreenShake());
-
-        // 3. Volver a posición normal
         yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator LevantarCabeza(CameraController camController)
     {
-        // Desactivar control manual
         camController.controlActivo = false;
 
         float duration = 0.3f;
@@ -147,7 +138,6 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
-        // Mantener mirando 4 segundos
         yield return new WaitForSeconds(2f);
 
         // Volver a posición original
@@ -160,7 +150,6 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
-        // Reactivar control manual
         camController.controlActivo = true;
     }
 
@@ -173,18 +162,24 @@ public class LevelManager : MonoBehaviour
         float magnitud = 0.1f;
         float elapsed = 0f;
 
+        // [gamepad-support] Rumble sincronizado con el screen shake
+        if (Gamepad.current != null)
+            Gamepad.current.SetMotorSpeeds(0.6f, 0.8f);
+
         while (elapsed < duracion)
         {
             float x = Random.Range(-1f, 1f) * magnitud;
             float y = Random.Range(-1f, 1f) * magnitud;
-
             cam.transform.localPosition = posicionOriginal + new Vector3(x, y, 0);
-
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         cam.transform.localPosition = posicionOriginal;
+
+        // [gamepad-support] Detener rumble al terminar el shake
+        if (Gamepad.current != null)
+            Gamepad.current.SetMotorSpeeds(0f, 0f);
     }
 
     public bool EvaluarCarta(ObjetoCarta carta)
@@ -195,7 +190,7 @@ public class LevelManager : MonoBehaviour
         {
             // ACIERTO
             ultimoAcierto = valor;
-            erroresConsecutivos = 0; // Resetear errores en acierto
+            erroresConsecutivos = 0;
 
             if (NivelActual == 1 || NivelActual == 2)
                 tiempoRestante += 2f;
@@ -205,9 +200,7 @@ public class LevelManager : MonoBehaviour
             LimpiarHighlights();
 
             if (ultimoAcierto == topeCartas)
-            {
                 FinNivel(true);
-            }
             else
             {
                 IluminarFilaSiguiente();
@@ -229,11 +222,10 @@ public class LevelManager : MonoBehaviour
 
         tiempoRestante = Mathf.Max(tiempoRestante, 0f);
 
-        // Si alcanzó 3 errores, activar reacción
         if (erroresConsecutivos >= maxErroresParaReaccion)
         {
             StartCoroutine(ReaccionEnemigo());
-            erroresConsecutivos = 0; // Resetear después de reacción
+            erroresConsecutivos = 0;
         }
 
         return false;
@@ -266,8 +258,6 @@ public class LevelManager : MonoBehaviour
 
         for (int i = inicio; i < fin && i < cartas.Count; i++)
             cartas[i].SetHighlight(true);
-
-        Debug.Log($"Highlight fila {fila} (valor esperado {siguienteValor})");
     }
 
     private void IluminarError()
@@ -283,13 +273,9 @@ public class LevelManager : MonoBehaviour
                 continue;
 
             if (carta.ValorCarta == valorCorrecto)
-            {
                 correcta = carta;
-            }
             else
-            {
                 candidatas.Add(carta);
-            }
         }
 
         if (correcta == null)
@@ -313,7 +299,6 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var carta in cartas)
             carta.SetHighlight(false);
-        Debug.Log("Se limpio el Highlight");
     }
 
     private void FinNivelInterno(bool ganado)
@@ -329,6 +314,9 @@ public class LevelManager : MonoBehaviour
             int nivelQueSeAcabaDeGanar = GameManager.Instance.NivelActual;
 
             if (nivelQueSeAcabaDeGanar >= GameManager.Instance.MaxNivel)
+            if (GameManager.Instance.NivelActual < 5)
+                ReiniciarNivel();
+            else
             {
                 // Es el último nivel → terminar partida
                 GameManager.Instance.ganoPartida = 1;
@@ -416,4 +404,12 @@ public class LevelManager : MonoBehaviour
     {
         DesactivarPausaInterno();
     }
+
+    // ── Cambios feature/gamepad-support ──────────────────────────
+
+    /// <summary>
+    /// Expone la lista de cartas del nivel para que GamepadCardSelector
+    /// pueda navegarlas sin romper el encapsulamiento del LevelManager.
+    /// </summary>
+    public List<CardManager> GetCartas() => cartas;
 }
