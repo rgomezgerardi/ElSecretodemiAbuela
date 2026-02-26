@@ -2,35 +2,44 @@ using UnityEngine;
 
 public class EndSoundManager : MonoBehaviour
 {
+    public static EndSoundManager Instance { get; private set; }
+
     [Header("Audio")]
     [SerializeField] private AudioSource winSource;
     [SerializeField] private AudioSource loseSource;
 
-    void Start()
+    private void Awake()
     {
-        ReproducirResultado();
+        Instance = this;
     }
 
-    private void ReproducirResultado()
+    public void PlayWin()
     {
-        if (GameManager.Instance == null)
-            return;
-
-        int resultado = GameManager.Instance.ganoPartida;
-
-        // Seguridad: apagar ambos
         if (winSource != null) winSource.Stop();
         if (loseSource != null) loseSource.Stop();
+        PlayWinInterno();
+    }
 
-        if (resultado == 1)
+    public void PlayLose()
+    {
+        if (winSource != null) winSource.Stop();
+        if (loseSource != null) loseSource.Stop();
+        PlayLoseInterno();
+    }
+
+    private void PlayWinInterno()
+    {
+        if (winSource != null)
         {
-            if (winSource != null)
-                winSource.Play();
+            winSource.Play();
         }
-        else
+    }
+
+    private void PlayLoseInterno()
+    {
+        if (loseSource != null)
         {
-            if (loseSource != null)
-                loseSource.Play();
+            loseSource.Play();
         }
     }
 }

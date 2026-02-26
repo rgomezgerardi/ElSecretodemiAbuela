@@ -101,6 +101,21 @@ public class MenuManager : MonoBehaviour
     private void QuitGame()
     {
         Debug.Log("Quitting game...");
-        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+
+#elif UNITY_WEBGL
+    Debug.Log("No se puede cerrar una aplicación WebGL desde el navegador.");
+
+#elif UNITY_ANDROID
+    Application.Quit();
+
+#elif UNITY_IOS
+    Debug.Log("Apple no permite cerrar apps programáticamente.");
+
+#else
+    Application.Quit();
+#endif
     }
 }

@@ -9,33 +9,32 @@ public class GanaPierdeManager : MonoBehaviour
 
     void Start()
     {
-        // Verificamos que GameManager exista
         if (GameManager.Instance == null)
         {
             Debug.LogError("GameManager no encontrado");
             return;
         }
 
-        // Configurar el texto según ganePartida
-        // 0 = sobrevive, 1 = muerto
         int ganaPartida = GameManager.Instance.ganoPartida;
 
         if (ganaPartida == 1)
         {
+            EndSoundManager.Instance.PlayWin();
             tituloGanPierde.text = "HAS SOBREVIVIDO!";
         }
         else
         {
+            EndSoundManager.Instance.PlayLose();
             tituloGanPierde.text = "HAS MUERTO...";
         }
 
-        // Configurar listener del botón
-        exitGame.onClick.RemoveAllListeners(); // por si ya tenía
+        exitGame.onClick.RemoveAllListeners();
         exitGame.onClick.AddListener(IrAMainMenu);
     }
 
     private void IrAMainMenu()
     {
+        GameManager.Instance.ResetearInfo();
         SceneManager.LoadScene("MainMenu");
     }
 }

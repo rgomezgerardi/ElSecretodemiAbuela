@@ -9,6 +9,9 @@ public class CameraController : MonoBehaviour
 
     public bool controlActivo = true;
 
+    private bool mirarPorTeclado = false;
+    private bool mirarPorBoton = false;
+
     void Start()
     {
         originalRotation = transform.eulerAngles;
@@ -17,9 +20,14 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!controlActivo) return;
+        if (!controlActivo) // ← NUEVO: No hacer nada si está desactivado
+            return;
 
-        Vector3 targetRotation = originalRotation;
+        // Leer teclado sin pisar el botón
+        if (Keyboard.current != null)
+            mirarPorTeclado = Keyboard.current.wKey.isPressed;
+
+        bool mirarEnemy = mirarPorTeclado || mirarPorBoton;
 
         bool wPressed = Keyboard.current != null && Keyboard.current.wKey.isPressed;
 
@@ -32,6 +40,20 @@ public class CameraController : MonoBehaviour
         if (wPressed || gamepadUp)
             targetRotation = forwardRotation;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotateSpeed);
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            Quaternion.Euler(targetRotation),
+            Time.deltaTime * rotateSpeed
+        );
+    }
+
+    public void BotonPresionado()
+    {
+        mirarPorBoton = true;
+    }
+
+    public void BotonSoltado()
+    {
+        mirarPorBoton = false;
     }
 }

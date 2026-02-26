@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -23,14 +24,16 @@ public class LevelManager : MonoBehaviour
     public float TiempoRestante => tiempoRestante;
     [SerializeField] private float tiempoRestante;
 
-    [SerializeField] private bool enModoError;
-
     [Header("Menu Pause")]
     [SerializeField] private GameObject panelMenuPause;
 
     [Header("Sistema de Errores")]
     [SerializeField] private int erroresConsecutivos = 0;
     [SerializeField] private int maxErroresParaReaccion = 3;
+
+    [Header("UI Fin de Nivel")]
+    [SerializeField] private GameObject panelNivelSuperado;
+    [SerializeField] private Text ptextNivelSuperado;
 
     private bool nivelActivo;
 
@@ -100,8 +103,11 @@ public class LevelManager : MonoBehaviour
         }
 
         for (int i = 0; i < cartas.Count; i++)
+        {
             cartas[i].SetValorCarta(pool[i]);
+        }
     }
+
 
     private IEnumerator ReaccionEnemigo()
     {
@@ -197,7 +203,6 @@ public class LevelManager : MonoBehaviour
                 FinNivel(true);
             else
             {
-                enModoError = false;
                 IluminarFilaSiguiente();
             }
 
@@ -208,7 +213,6 @@ public class LevelManager : MonoBehaviour
         erroresConsecutivos++;
 
         LimpiarHighlights();
-        enModoError = true;
         IluminarError();
 
         if (NivelActual >= 1 && NivelActual <= 4)
@@ -305,14 +309,24 @@ public class LevelManager : MonoBehaviour
         if (ganado)
         {
             GameManager.Instance.GuardarBonificacion(tiempoRestante);
-            GameManager.Instance.AvanzarNivel();
 
+            // 🔥 Guardamos el nivel que acaba de terminar
+            int nivelQueSeAcabaDeGanar = GameManager.Instance.NivelActual;
+
+            if (nivelQueSeAcabaDeGanar >= GameManager.Instance.MaxNivel)
             if (GameManager.Instance.NivelActual < 5)
                 ReiniciarNivel();
             else
             {
+                // Es el último nivel → terminar partida
                 GameManager.Instance.ganoPartida = 1;
                 SceneManager.LoadScene("GanaPierde");
+            }
+            else
+            {
+                // No es el último → avanzar
+                GameManager.Instance.AvanzarNivel();
+                StartCoroutine(TransicionNivelSuperado());
             }
         }
         else
@@ -321,6 +335,20 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.ResetearInfo();
             SceneManager.LoadScene("GanaPierde");
         }
+    }
+
+    private IEnumerator TransicionNivelSuperado()
+    {
+        nivelActivo = false;
+
+        ptextNivelSuperado.text = $"SOBREVIVISTE AL NIVEL {nivelActual}... PREPARATE PARA EL SIGUIENTE!";
+        panelNivelSuperado.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        panelNivelSuperado.SetActive(false);
+
+        ReiniciarNivel();
     }
 
     public void FinNivel(bool ganado)
@@ -333,7 +361,6 @@ public class LevelManager : MonoBehaviour
         StopAllCoroutines();
 
         nivelActivo = false;
-        enModoError = false;
         ultimoAcierto = 0;
         erroresConsecutivos = 0;
 
