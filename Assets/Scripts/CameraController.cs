@@ -28,7 +28,15 @@ public class CameraController : MonoBehaviour
             mirarPorTeclado = Keyboard.current.wKey.isPressed;
 
         bool mirarEnemy = mirarPorTeclado || mirarPorBoton;
+        
+        Vector3 targetRotation = mirarEnemy ? forwardRotation : originalRotation;
 
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            Quaternion.Euler(targetRotation),
+            Time.deltaTime * rotateSpeed
+        );
+        
         bool wPressed = Keyboard.current != null && Keyboard.current.wKey.isPressed;
 
         // ── Cambios feature/gamepad-support ──────────────────────────
