@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public Vector3 forwardRotation;
     public float rotateSpeed = 5f;
 
-    public bool controlActivo = true; // ← NUEVO
+    public bool controlActivo = true;
 
     void Start()
     {
@@ -17,12 +17,19 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!controlActivo) // ← NUEVO: No hacer nada si está desactivado
-            return;
+        if (!controlActivo) return;
 
         Vector3 targetRotation = originalRotation;
 
-        if (Keyboard.current != null && Keyboard.current.wKey.isPressed)
+        bool wPressed = Keyboard.current != null && Keyboard.current.wKey.isPressed;
+
+        // ── Cambios feature/gamepad-support ──────────────────────────
+        // Stick izquierdo hacia arriba o D-Pad arriba replican la funcionalidad de W
+        bool gamepadUp = Gamepad.current != null &&
+                         (Gamepad.current.leftStick.ReadValue().y > 0.5f ||
+                          Gamepad.current.dpad.up.isPressed);
+
+        if (wPressed || gamepadUp)
             targetRotation = forwardRotation;
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotateSpeed);
