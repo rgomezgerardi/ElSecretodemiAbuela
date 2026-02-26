@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Progresión")]
     [SerializeField] private int nivelActual = 1;
+    [SerializeField] public int MaxNivel = 5;
     [SerializeField] private int[] topesPorNivel = { 5, 8, 12, 16, 20 };
 
     private float bonificacionTiempo = 0f;
