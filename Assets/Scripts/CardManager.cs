@@ -81,6 +81,11 @@ public class CardManager : MonoBehaviour
 
     public void OnClick()
     {
+        VoltearCarta();
+    }
+
+    private void VoltearCarta()
+    {
         if (estaGirando || estaBloqueada || LevelManager.Instance == null)
             return;
 
