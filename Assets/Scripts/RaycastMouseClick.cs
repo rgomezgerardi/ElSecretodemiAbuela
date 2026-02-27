@@ -1,20 +1,30 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RaycastMouseClick : MonoBehaviour
+public class RaycastClick : MonoBehaviour
 {
     [SerializeField] private LayerMask capaCartas;
 
     void Update()
     {
-        if (Mouse.current == null)
-            return;
+        Vector2 inputPosition;
 
-        if (!Mouse.current.leftButton.wasPressedThisFrame)
+        // ===== MOUSE (PC / Editor) =====
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            inputPosition = Mouse.current.position.ReadValue();
+        }
+        // ===== TOUCH (Mobile) =====
+        else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            inputPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        else
+        {
             return;
+        }
 
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        Ray ray = Camera.main.ScreenPointToRay(inputPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, capaCartas))
         {
@@ -25,9 +35,6 @@ public class RaycastMouseClick : MonoBehaviour
             {
                 card.OnClick();
 
-                // ── Cambios feature/gamepad-support ──────────────────────────
-                // Sincroniza la selección del mando con la carta clickeada con mouse,
-                // manteniendo ambos métodos de input en el mismo cursor de selección.
                 GamepadCardSelector selector = FindFirstObjectByType<GamepadCardSelector>();
                 if (selector != null)
                     selector.SincronizarDesdeClick(card);
