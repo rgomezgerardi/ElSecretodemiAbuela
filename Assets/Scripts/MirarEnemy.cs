@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BotonMirarEnemy : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class LookEnemyButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public CameraController cameraController;
-
     public void OnPointerDown(PointerEventData eventData)
     {
-        cameraController.BotonPresionado();
+        Debug.Log("Pointer Down detectado");
+        InputManager.Instance?.TriggerLookEnemy(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        cameraController.BotonSoltado();
+        InputManager.Instance?.TriggerLookEnemy(false);
     }
 }

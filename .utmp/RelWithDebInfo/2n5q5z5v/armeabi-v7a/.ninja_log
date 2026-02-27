@@ -1,0 +1,10 @@
+# ninja log v5
+16	1204	7939161293800973	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	5ff55b4fa1a9919
+11	1218	7939161293861090	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	35c7c3aa59980dd5
+29	1234	7939161294124879	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	db07a93d3f8e467f
+40	1277	7939161294513469	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	4619677ed0b97e00
+0	1298	7939161294762987	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	578fa17f4a42c711
+34	1421	7939161295969328	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	6c177ef3595e601f
+21	1502	7939161296793508	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1882d88112879156
+5	1642	7939161298113395	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f9032a0a7cd277d
+1643	1883	7939161300214041	E:/ElVirus3D/Videojuegos/ElSecretoDeMiAbuela/Clon/ElSecretodemiAbuela/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2n5q5z5v/obj/armeabi-v7a/libgame.so	3e8650935dfc8d0e

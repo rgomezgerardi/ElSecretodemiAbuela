@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
     private float inputDelay = 0.2f;
     private float inputTimer;
 
+    private bool mobileLookHeld;
+
     void Awake()
     {
         if (Instance == null)
@@ -173,14 +175,14 @@ public class InputManager : MonoBehaviour
 
     private bool GetLookHeld()
     {
-        bool held = false;
+        bool held = mobileLookHeld;
 
         if (Keyboard.current != null &&
             Keyboard.current.wKey.isPressed)
             held = true;
 
         if (Gamepad.current != null &&
-            Gamepad.current.rightShoulder.isPressed) // R1 en PS4
+            Gamepad.current.rightShoulder.isPressed)
             held = true;
 
         return held;
@@ -205,5 +207,10 @@ public class InputManager : MonoBehaviour
         }
 
         return pressed;
+    }
+
+    public void TriggerLookEnemy(bool value)
+    {
+        mobileLookHeld = value;
     }
 }

@@ -1,0 +1,17 @@
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\GAToUnityCallbacks.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroEnd.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroHeaderBegin.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroSourceBegin.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAApplication.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAConfiguration.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGADebug.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAEvents.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAInput.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboard.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboardCallbacks.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGATypes.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAVersion.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGACallbacks.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAConfigurationCallbacks.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAKeyEventCallbacks.h
+E:\ElVirus3D\Videojuegos\ElSecretoDeMiAbuela\Clon\ElSecretodemiAbuela\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAMotionEventCallbacks.h
