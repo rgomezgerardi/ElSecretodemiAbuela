@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,8 +8,7 @@ public class CameraController : MonoBehaviour
 
     public bool controlActivo = true;
 
-    private bool mirarPorTeclado = false;
-    private bool mirarPorBoton = false;
+    private bool mirarEnemy = false;
 
     void Start()
     {
@@ -20,15 +18,9 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!controlActivo) // ← NUEVO: No hacer nada si está desactivado
+        if (!controlActivo)
             return;
 
-        // Leer teclado sin pisar el botón
-        if (Keyboard.current != null)
-            mirarPorTeclado = Keyboard.current.wKey.isPressed;
-
-        bool mirarEnemy = mirarPorTeclado || mirarPorBoton;
-        
         Vector3 targetRotation = mirarEnemy ? forwardRotation : originalRotation;
 
         transform.rotation = Quaternion.Lerp(
@@ -36,32 +28,22 @@ public class CameraController : MonoBehaviour
             Quaternion.Euler(targetRotation),
             Time.deltaTime * rotateSpeed
         );
-        
-        bool wPressed = Keyboard.current != null && Keyboard.current.wKey.isPressed;
-
-        // ── Cambios feature/gamepad-support ──────────────────────────
-        // Stick izquierdo hacia arriba o D-Pad arriba replican la funcionalidad de W
-        bool gamepadUp = Gamepad.current != null &&
-                         (Gamepad.current.leftStick.ReadValue().y > 0.5f ||
-                          Gamepad.current.dpad.up.isPressed);
-
-        if (wPressed || gamepadUp)
-            targetRotation = forwardRotation;
-
-        transform.rotation = Quaternion.Lerp(
-            transform.rotation,
-            Quaternion.Euler(targetRotation),
-            Time.deltaTime * rotateSpeed
-        );
     }
 
+    // Llamado desde InputManager (PC / Gamepad)
+    public void SetLook(bool state)
+    {
+        mirarEnemy = state;
+    }
+
+    // Llamado desde botón UI móvil
     public void BotonPresionado()
     {
-        mirarPorBoton = true;
+        mirarEnemy = true;
     }
 
     public void BotonSoltado()
     {
-        mirarPorBoton = false;
+        mirarEnemy = false;
     }
 }

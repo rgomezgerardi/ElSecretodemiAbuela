@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public int NivelActual => nivelActual;
     [SerializeField] private int topeCartas;
     [SerializeField] private int ultimoAcierto;
+    private int indiceSeleccionado = 0;
 
     [Header("Tiempo")]
     [SerializeField] private float tiempoNivel;
@@ -53,6 +54,28 @@ public class LevelManager : MonoBehaviour
         InicializarNivel();
     }
 
+    void OnEnable()
+    {
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnNavigate += HandleNavigate;
+            InputManager.Instance.OnConfirm += HandleConfirm;
+            InputManager.Instance.OnLookEnemy += HandleLook;
+            InputManager.Instance.OnPause += HandlePause;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnNavigate -= HandleNavigate;
+            InputManager.Instance.OnConfirm -= HandleConfirm;
+            InputManager.Instance.OnLookEnemy -= HandleLook;
+            InputManager.Instance.OnPause -= HandlePause;
+        }
+    }
+
     void Update()
     {
         if (!nivelActivo)
@@ -65,14 +88,95 @@ public class LevelManager : MonoBehaviour
             tiempoRestante = 0f;
             FinNivel(false);
         }
+    }
 
-        if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
+    // =========================
+    // INPUT HANDLERS
+    // =========================
+
+    private void HandleNavigate(Vector2 dir)
+    {
+        if (!nivelActivo || cartas.Count == 0)
+            return;
+
+        int columnas = 5;
+        int filas = cartas.Count / columnas;
+
+        int filaActual = indiceSeleccionado / columnas;
+        int colActual = indiceSeleccionado % columnas;
+
+        if (dir.y > 0.5f)       // ARRIBA
+            filaActual--;
+        else if (dir.y < -0.5f) // ABAJO
+            filaActual++;
+        else if (dir.x > 0.5f)  // DERECHA
+            colActual++;
+        else if (dir.x < -0.5f) // IZQUIERDA
+            colActual--;
+
+        // Wrap vertical
+        if (filaActual < 0) filaActual = filas - 1;
+        if (filaActual >= filas) filaActual = 0;
+
+        // Wrap horizontal
+        if (colActual < 0) colActual = columnas - 1;
+        if (colActual >= columnas) colActual = 0;
+
+        indiceSeleccionado = filaActual * columnas + colActual;
+
+        SeleccionarCartaActual();
+    }
+
+    private void HandleConfirm()
+    {
+        if (!nivelActivo || cartas.Count == 0)
+            return;
+
+        cartas[indiceSeleccionado].OnClick();
+    }
+
+    private void HandleLook(bool mirar)
+    {
+        if (!nivelActivo)
+            return;
+
+        CameraController cam = Camera.main.GetComponent<CameraController>();
+        if (cam != null)
+            cam.SetLook(mirar);
+    }
+
+    private IEnumerator ResetLook(CameraController cam)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        if (cam != null)
+            cam.controlActivo = true;
+    }
+
+    private void HandlePause()
+    {
+        if (!nivelActivo)
+            return;
+
+        if (panelMenuPause.activeSelf)
+            DesactivarPausa();
+        else
             ActivarPausa();
+    }
+
+    private void SeleccionarCartaActual()
+    {
+        for (int i = 0; i < cartas.Count; i++)
+        {
+            cartas[i].MostrarSelector(i == indiceSeleccionado);
+        }
     }
 
     private void InicializarNivel()
     {
         nivelActivo = false;
+
+        InputManager.Instance.SetState(GameInputState.Gameplay);
 
         nivelActual = GameManager.Instance.NivelActual;
         topeCartas = GameManager.Instance.TopeCartas;
@@ -398,11 +502,13 @@ public class LevelManager : MonoBehaviour
     public void ActivarPausa()
     {
         ActivarPausaInterno();
+        InputManager.Instance.SetState(GameInputState.Pausa);
     }
 
     public void DesactivarPausa()
     {
         DesactivarPausaInterno();
+        InputManager.Instance.SetState(GameInputState.Gameplay);
     }
 
     // ── Cambios feature/gamepad-support ──────────────────────────
